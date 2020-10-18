@@ -1,5 +1,6 @@
-##Demo
-http://romansaiko.github.io/waverley_react_test
+###Demo
+
+https://romansaiko.github.io/waverley_react_test/
 
 For this assignment I utilized the open hacker news API provided by Ycombinator, specifically the following API endpoints:<br />
 Top stories: https://hacker-news.firebaseio.com/v0/topstories.json <br />
