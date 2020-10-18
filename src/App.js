@@ -29,6 +29,21 @@ function App() {
 
     const randomizeData = (initialData) => initialData.sort(() => 0.5 - Math.random())
 
+    const convertTime = (unixTimestamp) => {
+        const milliseconds = unixTimestamp * 1000
+        const dateObject = new Date(milliseconds)
+        const options = {
+            month: '2-digit',
+            day: '2-digit',
+            year: 'numeric',
+        }
+        return dateObject.toLocaleString('en-US', options)
+    }
+
+    const sortAscendingly = (storiesArray) => {
+        storiesArray.sort((a, b) => parseFloat(a.score) - parseFloat(b.score))
+    }
+
     const getData = async () => {
         try {
             const storiesResponse = await fetch(
@@ -44,15 +59,17 @@ function App() {
                 )
                 selectedStories.push(await storyResponse.json())
             }
+            const sortedSelectedStories = [...selectedStories]
+            sortAscendingly(sortedSelectedStories)
             const selectedAuthors = []
-            const selectedAuthorsId = selectedStories.map((item) => item.by)
+            const selectedAuthorsId = sortedSelectedStories.map((item) => item.by)
             for (let i = 0; i < selectedAuthorsId.length; i += 1) {
                 const authorResponse = await fetch(
                     `https://hacker-news.firebaseio.com/v0/user/${selectedAuthorsId[i]}.json`
                 )
                 selectedAuthors.push(await authorResponse.json())
             }
-            setStories(selectedStories)
+            setStories(sortedSelectedStories)
             setAuthors(selectedAuthors)
         } catch (error) {
             setIsError(true)
@@ -93,7 +110,7 @@ function App() {
                                                 Author: {authors[index].id} - {authors[index].karma}
                                             </Typography>
                                             <Typography component='p'>
-                                                Published: {story.time}
+                                                Published: {convertTime(story.time)}
                                             </Typography>
                                         </CardContent>
                                     </Card>
