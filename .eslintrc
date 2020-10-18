@@ -19,9 +19,8 @@
     "prettier"
   ],
   "rules": {
-    "semi": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "prettier/prettier": ["error"],
-    "import/prefer-default-export": "off"
+    "no-await-in-loop": "off"
   }
 }
