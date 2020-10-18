@@ -1,6 +1,24 @@
+##Demo
+
+
+For this assignment I utilized the open hacker news API provided by Ycombinator, specifically the following API endpoints:<br />
+Top stories: https://hacker-news.firebaseio.com/v0/topstories.json <br />
+Story info: https://hacker-news.firebaseio.com/v0/item/[id].json (replace [id] with story id)<br />
+Author info: https://hacker-news.firebaseio.com/v0/user/[id].json (replace [id] with user id)<br />
+
+I fetched ten stories at random from the top stories list. Then present these stories on a web page sorted by story score ascendingly. Also website don`t present any data until all is collected.<br />
+
+The presentation includes such data:
+* Story title;
+* Story URL;
+* Story timestamp;
+* Story score;
+* Author id;
+* Author karma score.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
